@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 import re, string, sys, os, time
 
 DEBUG = 0

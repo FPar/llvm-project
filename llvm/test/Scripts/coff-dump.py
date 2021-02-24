@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 #===-- coff-dump.py - COFF object file dump utility-------------------------===#
 #
 #                     The LLVM Compiler Infrastructure

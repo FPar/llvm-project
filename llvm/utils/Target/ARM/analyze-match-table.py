@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 
 def analyze_match_table(path):
     # Extract the instruction table.
