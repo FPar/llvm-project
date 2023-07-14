@@ -459,7 +459,8 @@ public:
   /// When dealing with an instruction that has side effects or produces a void
   /// value, we can't rely on DCE to delete the instruction. Instead, visit
   /// methods should return the value returned by this function.
-  virtual Instruction *eraseInstFromFunction(Instruction &I) = 0;
+  virtual Instruction *eraseInstFromFunction(Instruction &I,
+                                             bool DeferredDead = false) = 0;
 
   void computeKnownBits(const Value *V, KnownBits &Known, unsigned Depth,
                         const Instruction *CxtI) const {

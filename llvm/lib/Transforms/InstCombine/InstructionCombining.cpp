@@ -3800,7 +3800,7 @@ bool InstCombinerImpl::run() {
       // Note that eraseInstFromFunction() may push additional instructions on
       // the deferred worklist, so this will DCE whole instruction chains.
       if (isInstructionTriviallyDead(I, &TLI)) {
-        eraseInstFromFunction(*I);
+        eraseInstFromFunction(*I, true);
         ++NumDeadInst;
         continue;
       }

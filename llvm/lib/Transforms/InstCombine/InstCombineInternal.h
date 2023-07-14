@@ -403,7 +403,8 @@ public:
   /// When dealing with an instruction that has side effects or produces a void
   /// value, we can't rely on DCE to delete the instruction. Instead, visit
   /// methods should return the value returned by this function.
-  Instruction *eraseInstFromFunction(Instruction &I) override {
+  Instruction *eraseInstFromFunction(Instruction &I,
+                                     bool DeferredDead = false) override {
     LLVM_DEBUG(dbgs() << "IC: ERASE " << I << '\n');
     assert(I.use_empty() && "Cannot erase instruction that is used!");
     salvageDebugInfo(I);
@@ -415,7 +416,8 @@ public:
     I.eraseFromParent();
     for (Value *Op : Ops)
       Worklist.handleUseCountDecrement(Op);
-    MadeIRChange = true;
+    if (!DeferredDead)
+      MadeIRChange = true;
     return nullptr; // Don't do anything with FI
   }
 
